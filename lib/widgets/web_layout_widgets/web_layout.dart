@@ -27,10 +27,10 @@ class WebLayout extends StatelessWidget {
         actions: [
           AppBarButton(
               buttonName: "About",
-              onPressed: () => Navigator.pushNamed(context, '/about')),
+              funtion: () => Navigator.pushNamed(context, '/about')),
           AppBarButton(
               buttonName: "buttonName",
-              onPressed: () => Navigator.pushNamed(context, '/about')),
+              funtion: () => Navigator.pushNamed(context, '/about')),
         ],
       ),
       body: Column(
@@ -66,14 +66,12 @@ class WebLayout extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class AppBarButton extends TextButton {
-  @override
-  VoidCallback onPressed;
-  String buttonName;
-  AppBarButton({required this.buttonName, required this.onPressed, super.key})
+  final VoidCallback funtion;
+  final String buttonName;
+  AppBarButton({required this.buttonName, required this.funtion, super.key})
       : super(
           child: Text(buttonName),
-          onPressed: onPressed,
+          onPressed: funtion,
         );
 }

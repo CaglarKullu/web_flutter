@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab.dart';
 
 import 'widgets/homepage.dart';
 
