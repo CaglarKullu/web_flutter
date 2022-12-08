@@ -15,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         } else {
           isWeb = true;
         }
-        return isWeb == true ? const AboutTab() : const MobileLayout();
+        return isWeb == true ? const AboutPage() : const MobileLayout();
       },
     );
   }
