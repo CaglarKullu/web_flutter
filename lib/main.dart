@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:web_demo/widgets/web_layout_widgets/contact_tab.dart';
+import 'package:web_demo/widgets/web_layout_widgets/portfolio_tab.dart';
 
 import 'widgets/homepage.dart';
 
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
               '/': (context) => const MyHomePage(),
               // When navigating to the "/second" route, build the SecondScreen widget.
               '/about': (context) => const MyHomePage(),
+              '/portfolio': (context) => const PortfolioPage(),
+              '/contact': (context) => const ContactPage(),
             },
           );
         },

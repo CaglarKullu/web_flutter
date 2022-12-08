@@ -24,14 +24,22 @@ class WebLayout extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          AppBarButton(
-              buttonName: "About",
-              funtion: () => Navigator.pushNamed(context, '/about')),
-          AppBarButton(
-              buttonName: "buttonName",
-              funtion: () => Navigator.pushNamed(context, '/about')),
-        ],
+        flexibleSpace: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppBarButton(
+                  buttonName: "About",
+                  funtion: () => Navigator.pushNamed(context, '/about')),
+              AppBarButton(
+                  buttonName: "Portfolio",
+                  funtion: () => Navigator.pushNamed(context, '/about')),
+              AppBarButton(
+                  buttonName: "Contact",
+                  funtion: () => Navigator.pushNamed(context, '/about')),
+            ],
+          ),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -71,7 +79,10 @@ class AppBarButton extends TextButton {
   final String buttonName;
   AppBarButton({required this.buttonName, required this.funtion, super.key})
       : super(
-          child: Text(buttonName),
+          child: Text(
+            buttonName,
+            style: const TextStyle(color: Colors.white),
+          ),
           onPressed: funtion,
         );
 }

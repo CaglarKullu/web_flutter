@@ -12,3 +12,6 @@ final sizeProviderProvider =
         (ref, context) {
   return SizeProvider(context);
 });
+
+final appbarToggleButtonStateProvider =
+    StateProvider<List<bool>>((ref) => [false, false, false]);
