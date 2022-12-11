@@ -13,9 +13,6 @@ final sizeProviderProvider =
   return SizeProvider(context);
 });
 
-final appbarToggleButtonStateProvider = StateProvider<List<bool>>(
-    (ref) => List<bool>.generate(3, (int index) => false));
-
 class ToggleButtonState extends StateNotifier<List<bool>> {
   ToggleButtonState() : super(List<bool>.generate(3, (int index) => false));
   void onPressed(int index) {
@@ -28,3 +25,4 @@ class ToggleButtonState extends StateNotifier<List<bool>> {
 final buttonStateProvider =
     StateNotifierProvider<ToggleButtonState, List<bool>>(
         (ref) => ToggleButtonState());
+final indexProvider = StateProvider<int>((ref) => 0);

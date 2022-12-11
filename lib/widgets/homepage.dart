@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_demo/widgets/mobile_layout.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab.dart';
+import 'package:web_demo/widgets/mobile_layout_widgets/mobile_layout.dart';
+import 'package:web_demo/widgets/web_layout_widgets/web_layout.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -15,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         } else {
           isWeb = true;
         }
-        return isWeb == true ? const AboutPage() : const MobileLayout();
+        return isWeb == true ? const WebLayout() : const MobileLayout();
       },
     );
   }

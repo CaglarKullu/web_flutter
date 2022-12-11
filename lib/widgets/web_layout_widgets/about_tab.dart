@@ -1,7 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:web_demo/consts/const.dart';
-
 import 'package:web_demo/consts/providers.dart';
 
 class AboutPage extends ConsumerWidget {
@@ -9,42 +8,20 @@ class AboutPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isSelected = ref.watch(buttonStateProvider);
+    Size size = ref.refresh(sizeProviderProvider(context));
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Consumer(
-          builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ToggleButtons(
-                  selectedColor: Colors.amber,
-                  isSelected: isSelected,
-                  onPressed: (index) {
-                    ref.refresh(buttonStateProvider.notifier).onPressed(index);
-                    // ignore: void_checks
-                    return Consts().pageRoute(index, context);
-                  },
-                  children: const [
-                    Center(
-                      child: Text("About"),
-                    ),
-                    Center(
-                      child: Text("Portfolio"),
-                    ),
-                    Center(
-                      child: Text("Contact"),
-                    ),
-                  ],
-                ),
-              ],
-            );
-          },
-        ),
-      ),
       body: Column(
-        children: const [Center(child: Text("About"))],
+        children: [
+          Center(
+            child: CachedNetworkImage(
+              imageUrl:
+                  "https://avatars.githubusercontent.com/u/97615706?s=400&u=92732f019b85640824583affbcb84493938e42bb&v=4",
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          )
+        ],
       ),
     ));
   }
