@@ -7,6 +7,7 @@ class Consts {
   static Color unselectedStyle = Colors.grey;
   static Color selectedStyle = Colors.white;
   static Color backgroundColor = Colors.black12;
+
   pageRoute(int index, BuildContext context) {
     switch (index) {
       case 0:
