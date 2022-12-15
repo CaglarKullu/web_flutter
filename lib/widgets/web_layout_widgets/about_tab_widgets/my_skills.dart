@@ -1,8 +1,8 @@
+import 'package:caglar_portfolio/consts/providers.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/gridview_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:web_demo/consts/providers.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/gridview_item_widget.dart';
 
 class MySkills extends ConsumerWidget {
   const MySkills({super.key});

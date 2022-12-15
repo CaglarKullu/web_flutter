@@ -1,5 +1,5 @@
-name: web_demo
-description: A new Flutter project.
+name: caglar_portfolio
+description: web app
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -39,6 +39,9 @@ dependencies:
   responsive_sizer: ^3.1.1
   flutter_riverpod: ^2.1.1
   cached_network_image: ^3.2.3
+  url_launcher: ^6.1.7
+  fluttericon: ^2.0.0
+  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_test:

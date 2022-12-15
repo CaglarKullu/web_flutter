@@ -1,7 +1,9 @@
+import 'package:caglar_portfolio/consts/providers.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:web_demo/consts/providers.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ContactPage extends ConsumerWidget {
   const ContactPage({super.key});
@@ -9,6 +11,13 @@ class ContactPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Size size = ref.refresh(sizeProviderProvider(context));
+    Uri email = Uri(
+      scheme: 'mailto',
+      path: 'caglarkullu@gmail.com',
+    );
+    Uri linkedin =
+        Uri.tryParse("https://www.linkedin.com/in/caglar-kullu-b23085163/")!;
+    Uri github = Uri.tryParse("https://github.com/CaglarKullu")!;
     return SafeArea(
         child: Scaffold(
       body: Center(
@@ -32,7 +41,50 @@ class ContactPage extends ConsumerWidget {
               ),
             ),
             child: Column(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Container(
+                        height: 0.2.w,
+                        width: size.width / 8,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      "Contact Me",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Container(
+                        height: 0.2.w,
+                        width: size.width / 8,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                ContactLauncher(
+                    link: "caglarkullu@gmail.com",
+                    iconData: Icons.email,
+                    url: email),
+                ContactLauncher(
+                    link: "https://www.linkedin.com/in/caglar-kullu-b23085163/",
+                    iconData: FontAwesome5.linkedin,
+                    url: linkedin),
+                ContactLauncher(
+                    link: "https://github.com/CaglarKullu",
+                    iconData: FontAwesome5.github,
+                    url: github)
+              ],
             )),
       )),
     ));

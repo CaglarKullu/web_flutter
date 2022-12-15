@@ -1,6 +1,6 @@
+import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:web_demo/consts/providers.dart';
 
 class MePhoto extends ConsumerWidget {
   const MePhoto({super.key});
@@ -14,8 +14,8 @@ class MePhoto extends ConsumerWidget {
       child: Center(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-            'https://github.com/CaglarKullu/web_flutter/blob/master/assets/me.jpg',
+          child: Image.asset(
+            'assets/me.jpg',
             frameBuilder: (context, child, frame, bool wasSynchronouslyLoaded) {
               if (wasSynchronouslyLoaded) {
                 return child;

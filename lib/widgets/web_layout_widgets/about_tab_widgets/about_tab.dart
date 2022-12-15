@@ -1,11 +1,9 @@
+import 'package:caglar_portfolio/consts/providers.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/me_photo.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/me_writing_widget.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/my_skills.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:web_demo/consts/providers.dart';
-
-import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/me_photo.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/me_writing_widget.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/my_skills.dart';
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});

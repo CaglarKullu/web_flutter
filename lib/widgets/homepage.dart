@@ -1,6 +1,6 @@
+import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_layout.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/web_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:web_demo/widgets/mobile_layout_widgets/mobile_layout.dart';
-import 'package:web_demo/widgets/web_layout_widgets/web_layout.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});

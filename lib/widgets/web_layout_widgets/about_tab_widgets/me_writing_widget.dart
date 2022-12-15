@@ -1,8 +1,8 @@
+import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:web_demo/consts/providers.dart';
 
 class MeWriting extends ConsumerWidget {
   const MeWriting({super.key});
