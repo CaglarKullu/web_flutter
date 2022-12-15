@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_demo/widgets/web_layout_widgets/about_tab.dart';
+import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
 import 'package:web_demo/widgets/web_layout_widgets/contact_tab.dart';
 import 'package:web_demo/widgets/web_layout_widgets/portfolio_tab.dart';
 
