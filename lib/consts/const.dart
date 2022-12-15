@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:web_demo/widgets/mobile_layout_widgets/mobile_about_me/mobile_about_me.dart';
 import 'package:web_demo/widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
-import 'package:web_demo/widgets/web_layout_widgets/contact_tab.dart';
+import 'package:web_demo/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
 import 'package:web_demo/widgets/web_layout_widgets/portfolio_tab.dart';
 
 class Consts {
@@ -28,6 +29,22 @@ class Consts {
     switch (index) {
       case 0:
         return const AboutPage();
+
+      case 1:
+        return const PortfolioPage();
+
+      case 2:
+        return const ContactPage();
+
+      default:
+        return const AboutPage();
+    }
+  }
+
+  Widget pageMobileLayout(int index) {
+    switch (index) {
+      case 0:
+        return const MobileAboutPage();
 
       case 1:
         return const PortfolioPage();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:web_demo/consts/providers.dart';
-import 'package:web_demo/widgets/web_layout_widgets/appbar_button.dart';
+import 'package:web_demo/widgets/common_features/appbar_button.dart';
 
 class AppBarWidget extends ConsumerWidget {
   const AppBarWidget({super.key});

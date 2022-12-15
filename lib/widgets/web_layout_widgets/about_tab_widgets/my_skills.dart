@@ -20,36 +20,33 @@ class MySkills extends ConsumerWidget {
           ),
         ),
         Center(
-          child: Flexible(
-            flex: 1,
-            child: SizedBox(
-              width: size.width / 3,
-              child: GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                childAspectRatio: 1,
-                shrinkWrap: true,
-                crossAxisCount: 3,
-                children: const [
-                  GridviewItem(
-                      url:
-                          "https://storage.googleapis.com/cms-storage-bucket/a9d6ce81aee44ae017ee.png"),
-                  GridviewItem(
-                      url:
-                          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programming_language_logo.svg/2560px-Dart_programming_language_logo.svg.png"),
-                  GridviewItem(
-                      url:
-                          "https://cdn.iconscout.com/icon/free/png-256/sqlite-282687.png"),
-                  GridviewItem(
-                      url:
-                          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/1200px-Firebase_Logo.svg.png"),
-                  GridviewItem(
-                      url:
-                          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kotlin_logo.svg/2560px-Kotlin_logo.svg.png"),
-                  GridviewItem(
-                      url:
-                          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png")
-                ],
-              ),
+          child: SizedBox(
+            width: size.width / 3,
+            child: GridView.count(
+              physics: const NeverScrollableScrollPhysics(),
+              childAspectRatio: 1,
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              children: const [
+                GridviewItem(
+                    url:
+                        "https://storage.googleapis.com/cms-storage-bucket/a9d6ce81aee44ae017ee.png"),
+                GridviewItem(
+                    url:
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programming_language_logo.svg/2560px-Dart_programming_language_logo.svg.png"),
+                GridviewItem(
+                    url:
+                        "https://cdn.iconscout.com/icon/free/png-256/sqlite-282687.png"),
+                GridviewItem(
+                    url:
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/1200px-Firebase_Logo.svg.png"),
+                GridviewItem(
+                    url:
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kotlin_logo.svg/2560px-Kotlin_logo.svg.png"),
+                GridviewItem(
+                    url:
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png")
+              ],
             ),
           ),
         ),

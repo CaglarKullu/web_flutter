@@ -23,7 +23,7 @@ class AppBarButton extends ConsumerWidget {
               color: isSelected[index]
                   ? Consts.selectedStyle
                   : Consts.unselectedStyle,
-              fontSize: 15.sp,
+              fontSize: 16.sp,
             )),
       ),
     );
