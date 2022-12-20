@@ -40,7 +40,7 @@ class ContactLauncher extends ConsumerWidget {
             Text(
               link,
               style: TextStyle(color: Colors.black, fontSize: 15.sp),
-              overflow: TextOverflow.fade,
+              overflow: TextOverflow.clip,
             ),
           ],
         ),

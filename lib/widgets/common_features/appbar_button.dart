@@ -1,4 +1,5 @@
 import 'package:caglar_portfolio/consts/const.dart';
+import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

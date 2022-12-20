@@ -11,23 +11,20 @@ class AboutPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Size size = ref.refresh(sizeProviderProvider(context));
-    return SafeArea(
-        child: Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Flexible(flex: 1, child: MeWriting()),
-          SizedBox(
-            width: size.width / 30,
-          ),
-          const Flexible(flex: 1, child: MePhoto()),
-          SizedBox(
-            width: size.width / 30,
-          ),
-          const Flexible(child: MySkills()),
-        ],
-      ),
-    ));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Flexible(flex: 1, child: MeWriting()),
+        SizedBox(
+          width: size.width / 30,
+        ),
+        const Flexible(flex: 1, child: MePhoto()),
+        SizedBox(
+          width: size.width / 30,
+        ),
+        const Flexible(child: MySkills()),
+      ],
+    );
   }
 }

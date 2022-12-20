@@ -19,8 +19,7 @@ class ContactPage extends ConsumerWidget {
         Uri.tryParse("https://www.linkedin.com/in/caglar-kullu-b23085163/")!;
     Uri github = Uri.tryParse("https://github.com/CaglarKullu")!;
     return SafeArea(
-        child: Scaffold(
-      body: Center(
+      child: Center(
           child: Card(
         elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -77,7 +76,7 @@ class ContactPage extends ConsumerWidget {
                     iconData: Icons.email,
                     url: email),
                 ContactLauncher(
-                    link: "https://www.linkedin.com/in/caglar-kullu-b23085163/",
+                    link: "https://www.linkedin.com/in/caglar-kullu",
                     iconData: FontAwesome5.linkedin,
                     url: linkedin),
                 ContactLauncher(
@@ -87,6 +86,6 @@ class ContactPage extends ConsumerWidget {
               ],
             )),
       )),
-    ));
+    );
   }
 }

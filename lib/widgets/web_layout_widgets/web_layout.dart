@@ -1,6 +1,8 @@
-import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:caglar_portfolio/widgets/common_features/appbar_widget.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,11 +11,25 @@ class WebLayout extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int index = ref.watch(indexProvider);
+    final aboutKey = ref.watch(aboutKeyProvider);
+    final portfolioKey = ref.watch(portfolioKeyProvider);
+    final contactKey = ref.watch(contactKeyProvider);
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: const AppBarWidget(),
         ),
-        body: Consts().pageLayout(index));
+        body: ListView(
+          children: [
+            AboutPage(
+              key: aboutKey,
+            ),
+            PortfolioPage(
+              key: portfolioKey,
+            ),
+            ContactPage(
+              key: contactKey,
+            ),
+          ],
+        ));
   }
 }

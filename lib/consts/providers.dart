@@ -26,3 +26,10 @@ final buttonStateProvider =
     StateNotifierProvider<ToggleButtonState, List<bool>>(
         (ref) => ToggleButtonState());
 final indexProvider = StateProvider<int>((ref) => 0);
+
+final mobileAboutKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));
+final mobilePortfolioKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));
+final mobileContactKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));
+final aboutKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));
+final portfolioKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));
+final contactKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));

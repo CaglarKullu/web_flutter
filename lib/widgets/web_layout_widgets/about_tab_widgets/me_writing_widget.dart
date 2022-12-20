@@ -26,7 +26,9 @@ class MeWriting extends ConsumerWidget {
               TextSpan(
                   text: "Flutter Devopler ",
                   style: TextStyle(fontSize: 17.sp, color: Colors.amber)),
-              const TextSpan(text: "             "),
+              (size.width > 500)
+                  ? const TextSpan(text: "             ")
+                  : const TextSpan(text: " "),
               TextSpan(
                   text:
                       "I can create mobile applications, web sites and desktop applications according to your desires.",

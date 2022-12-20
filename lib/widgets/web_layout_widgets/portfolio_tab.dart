@@ -7,10 +7,13 @@ class PortfolioPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
-        child: Scaffold(
-      body: Column(
-        children: const [Center(child: Text("Portfolio"))],
+      child: Column(
+        children: const [
+          Center(
+              child:
+                  SizedBox(width: 500, height: 500, child: Text("Portfolio")))
+        ],
       ),
-    ));
+    );
   }
 }
