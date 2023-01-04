@@ -25,6 +25,7 @@ class ToggleButtonState extends StateNotifier<List<bool>> {
 final buttonStateProvider =
     StateNotifierProvider<ToggleButtonState, List<bool>>(
         (ref) => ToggleButtonState());
+
 final indexProvider = StateProvider<int>((ref) => 0);
 
 final mobileAboutKeyProvider = Provider<GlobalKey>(((ref) => GlobalKey()));

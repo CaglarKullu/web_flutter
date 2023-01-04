@@ -1,5 +1,6 @@
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:caglar_portfolio/widgets/common_features/appbar_widget.dart';
+import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_about_me/mobile_about_me.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_tab.dart';
@@ -11,6 +12,7 @@ class WebLayout extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Size size = ref.refresh(sizeProviderProvider(context));
     final aboutKey = ref.watch(aboutKeyProvider);
     final portfolioKey = ref.watch(portfolioKeyProvider);
     final contactKey = ref.watch(contactKeyProvider);
@@ -20,15 +22,19 @@ class WebLayout extends ConsumerWidget {
         ),
         body: ListView(
           children: [
-            AboutPage(
-              key: aboutKey,
+            SizedBox(
+              width: size.width / 2,
+              height: size.height,
+              child: AboutPage(
+                key: aboutKey,
+              ),
             ),
             PortfolioPage(
               key: portfolioKey,
             ),
             ContactPage(
               key: contactKey,
-            ),
+            )
           ],
         ));
   }

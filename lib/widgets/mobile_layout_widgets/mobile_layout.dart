@@ -9,13 +9,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MobileLayout extends ConsumerWidget {
   const MobileLayout({super.key});
-  void jumpWidget(GlobalKey key) {
-    Scrollable.ensureVisible(
-      key.currentContext!,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeInOut,
-    );
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

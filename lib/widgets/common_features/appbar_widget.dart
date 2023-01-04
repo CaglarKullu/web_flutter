@@ -19,48 +19,41 @@ class AppBarWidget extends ConsumerWidget {
     return ResponsiveSizer(
       builder: (BuildContext context, Orientation orientation,
           ScreenType screenType) {
-        void jumpPage() async {
-          int index = ref.watch(indexProvider);
-
-          switch (index) {
-            case 0:
-              Scrollable.ensureVisible(
-                (size.width > 500)
-                    ? aboutKey.currentContext!
-                    : mobileAboutKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut,
-              );
-              break;
-
-            case 1:
-              Scrollable.ensureVisible(
-                (size.width > 500)
-                    ? portfolioKey.currentContext!
-                    : mobilePorfolioKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut,
-              );
-              break;
-
-            case 2:
-              Scrollable.ensureVisible(
-                (size.width > 500)
-                    ? contactKey.currentContext!
-                    : mobileContactKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut,
-              );
-              break;
-
-            default:
-              Scrollable.ensureVisible(
-                (size.width > 500)
-                    ? aboutKey.currentContext!
-                    : mobileAboutKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut,
-              );
+        void jumpPage(int index) {
+          if (index == 0) {
+            Scrollable.ensureVisible(
+              (size.width > 501)
+                  ? aboutKey.currentContext!
+                  : mobileAboutKey.currentContext!,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+            );
+          }
+          if (index == 1) {
+            Scrollable.ensureVisible(
+              (size.width > 500)
+                  ? portfolioKey.currentContext!
+                  : mobilePorfolioKey.currentContext!,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+            );
+          }
+          if (index == 2) {
+            Scrollable.ensureVisible(
+              (size.width > 500)
+                  ? contactKey.currentContext!
+                  : mobileContactKey.currentContext!,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+            );
+          } else {
+            Scrollable.ensureVisible(
+              (size.width > 501)
+                  ? aboutKey.currentContext!
+                  : mobileAboutKey.currentContext!,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+            );
           }
         }
 
@@ -74,7 +67,8 @@ class AppBarWidget extends ConsumerWidget {
               onPressed: (index) {
                 ref.refresh(buttonStateProvider.notifier).onPressed(index);
                 ref.read(indexProvider.notifier).state = index;
-                jumpPage();
+                jumpPage(index);
+                print(index.toString());
               },
               children: [
                 AppBarButton(
