@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:caglar_portfolio/widgets/common_features/appbar_button.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +70,7 @@ class AppBarWidget extends ConsumerWidget {
                 ref.refresh(buttonStateProvider.notifier).onPressed(index);
                 ref.read(indexProvider.notifier).state = index;
                 jumpPage(index);
-                print(index.toString());
+                log(index.toString());
               },
               children: [
                 AppBarButton(

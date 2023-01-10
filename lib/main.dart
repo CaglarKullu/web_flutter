@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Orientation orientation,
             ScreenType screenType) {
           return MaterialApp(
+            scrollBehavior: AppScrollBehavior(),
             title: 'Flutter Demo',
             theme: ThemeData.dark().copyWith(),
             home: const MyHomePage(),
@@ -28,4 +30,13 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }

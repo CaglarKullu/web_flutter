@@ -17,7 +17,7 @@ class ToggleButtonState extends StateNotifier<List<bool>> {
   ToggleButtonState() : super(List<bool>.generate(3, (int index) => false));
   void onPressed(int index) {
     for (int i = 0; i < state.length; i++) {
-      state[i] = i == index;
+      state[i] = i == index % state.length;
     }
   }
 }

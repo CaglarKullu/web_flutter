@@ -1,9 +1,9 @@
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:caglar_portfolio/widgets/common_features/appbar_widget.dart';
-import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_about_me/mobile_about_me.dart';
+
 import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
-import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_tab.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_widgets/portfolio_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

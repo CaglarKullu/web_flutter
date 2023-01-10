@@ -1,5 +1,5 @@
 import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
-import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_tab.dart';
+import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_widgets/portfolio_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/mobile_layout_widgets/mobile_about_me/mobile_about_me.dart';
