@@ -15,7 +15,7 @@ class MePhoto extends ConsumerWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.asset(
-            'assets/me.jpg',
+            'assets/images/me.jpg',
             frameBuilder: (context, child, frame, bool wasSynchronouslyLoaded) {
               if (wasSynchronouslyLoaded) {
                 return child;
