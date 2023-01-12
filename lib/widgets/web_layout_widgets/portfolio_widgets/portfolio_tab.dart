@@ -19,8 +19,13 @@ class _PortfolioPageState extends State<PortfolioPage> {
           "/Users/caglarkullu/development/Projects/Web_demo/web_demo/assets/images/feedly.png",
       cardMessage:
           "First sourdough dedicated app is finally on Google Play, introducing: FEEDLY! To get more information about the app and the techs used, click on",
-      longText:
-          'First sourdough dedicated app is finally on Google Play, introducing: FEEDLY! Most of us started sourdough baking in the hard times that we faced while spending enormous time in our homes and mostly in our kitchens. Though it felt like a trend for a period of time in several social media accounts, many people noticed the taste of a freshly baked bread and the feeling of accomplishment for making your own food, so they still continue baking their own bread. We know you might be one of them and we understand your need to have a mobile application that has everything to do with your sourdough. All you need is flour, water and "Feedly"./n/ntechs',
+      textSpan1:
+          'Teches Used: \n\n-SQLite\n\n-Database Design\n\n-UX and UI design\n\n-Riverpod (state management)\n ',
+      textSpan2:
+          "\nDownload this application you visit the link below to Google Play\n",
+      textSpan3: "",
+      url:
+          'https://play.google.com/store/apps/details?id=com.ctksoftware.feedly',
     ),
     Container(
       margin: const EdgeInsets.symmetric(horizontal: 30),

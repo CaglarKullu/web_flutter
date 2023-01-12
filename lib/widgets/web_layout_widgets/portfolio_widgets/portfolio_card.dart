@@ -1,20 +1,33 @@
+import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PortfolioCard extends ConsumerWidget {
   final String imageStr;
   final String cardMessage;
   final String heroTag;
-  final String longText;
-  const PortfolioCard({
-    super.key,
-    required this.imageStr,
-    required this.cardMessage,
-    required this.heroTag,
-    required this.longText,
-  });
+  final String textSpan1;
+  final String textSpan2;
+  final String textSpan3;
+  final String url;
+
+  const PortfolioCard(
+      {super.key,
+      required this.imageStr,
+      required this.cardMessage,
+      required this.heroTag,
+      required this.textSpan1,
+      required this.textSpan2,
+      required this.textSpan3,
+      required this.url});
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,31 +36,59 @@ class PortfolioCard extends ConsumerWidget {
       onTap: () {
         Navigator.push(context, HeroDialogRoute(builder: ((context) {
           return AlertDialog(
-            content: Column(
-              children: [
-                Center(
-                  child: SizedBox(
-                    height: size.height / 3,
-                    child: Hero(
-                      tag: heroTag,
-                      child: Image(
-                        image: AssetImage(imageStr),
+            content: SizedBox(
+              height: size.height / 2,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        height: size.height / 3,
+                        child: Hero(
+                          tag: heroTag,
+                          child: Image(
+                            image: AssetImage(imageStr),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: textSpan1, style: Consts.normalText),
+                              TextSpan(
+                                  text: textSpan2, style: Consts.normalText),
+                              TextSpan(text: textSpan3),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(longText),
-                  ),
-                )
-              ],
+              ),
             ),
             actions: <Widget>[
-              TextButton(
-                onPressed: Navigator.of(context).pop,
-                child: const Text('RAD!'),
+              Card(
+                elevation: 10,
+                color: Consts.kGreyColor,
+                child: TextButton(
+                  onPressed: (() => _launchUrl(Uri.parse(url))),
+                  child: Text('Download From Google Play',
+                      style: Consts.normalText),
+                ),
+              ),
+              Card(
+                elevation: 10,
+                color: Consts.kGreyColor,
+                child: TextButton(
+                  onPressed: Navigator.of(context).pop,
+                  child: Text('Cancel', style: Consts.normalText),
+                ),
               ),
             ],
           );

@@ -9,6 +9,9 @@ class Consts {
   static Color unselectedStyle = Colors.grey;
   static Color selectedStyle = Colors.white;
   static Color backgroundColor = Colors.black12;
+  static Color kWhiteColor = Colors.white;
+  static Color kGreyColor = Colors.grey;
+  static TextStyle normalText = TextStyle(color: kWhiteColor);
 
   pageRoute(int index, BuildContext context) {
     switch (index) {
