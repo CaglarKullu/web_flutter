@@ -69,7 +69,8 @@ flutter:
   assets:
     - assets/images/me.jpg
     - assets/images/feedly.png
-  #   - images/a_dot_ham.jpeg
+    - assets/images/surprise_me.png
+    - assets/images/me2.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

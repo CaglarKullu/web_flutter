@@ -46,8 +46,11 @@ class PortfolioCard extends ConsumerWidget {
                         height: size.height / 3,
                         child: Hero(
                           tag: heroTag,
-                          child: Image(
-                            image: AssetImage(imageStr),
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: Image(
+                              image: AssetImage(imageStr),
+                            ),
                           ),
                         ),
                       ),
@@ -94,34 +97,36 @@ class PortfolioCard extends ConsumerWidget {
           );
         })));
       },
-      child: Card(
-        elevation: 10,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.h)),
-        child: Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(5),
-              width: 300.h,
-              height: 300.h,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.h),
-                child: Hero(
-                    tag: heroTag, child: Image(image: AssetImage(imageStr))),
-              ),
-            ),
-            SizedBox(
-              width: 250.h,
-              height: 300.h,
-              child: Center(
-                child: Text(
-                  cardMessage,
-                  maxLines: 10,
-                  style: TextStyle(fontSize: 20.sp),
+      child: FittedBox(
+        child: Card(
+          elevation: 10,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.h)),
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.all(5),
+                width: 300.h,
+                height: 300.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.h),
+                  child: Hero(
+                      tag: heroTag, child: Image(image: AssetImage(imageStr))),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: 250.h,
+                height: 300.h,
+                child: Center(
+                  child: Text(
+                    cardMessage,
+                    maxLines: 10,
+                    style: TextStyle(fontSize: 20.sp),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

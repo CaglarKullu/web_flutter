@@ -15,8 +15,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
   final List<Widget> _portfolioPages = [
     const PortfolioCard(
       heroTag: "feedly",
-      imageStr:
-          "/Users/caglarkullu/development/Projects/Web_demo/web_demo/assets/images/feedly.png",
+      imageStr: "assets/images/feedly.png",
       cardMessage:
           "First sourdough dedicated app is finally on Google Play, introducing: FEEDLY! To get more information about the app and the techs used, click on",
       textSpan1:
@@ -27,12 +26,18 @@ class _PortfolioPageState extends State<PortfolioPage> {
       url:
           'https://play.google.com/store/apps/details?id=com.ctksoftware.feedly',
     ),
-    Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30),
-      width: 30,
-      height: 30,
-      color: Colors.blue,
-    ),
+    const PortfolioCard(
+        imageStr: "assets/images/surprise_me.png",
+        cardMessage:
+            "Surprise Me is the first mobile application that has been designed to allow you, its users, to find some random cocktail recipes in a whole bunch of cocktails.",
+        heroTag: "Surpise Me",
+        textSpan1:
+            "Teches Used: \n\n-Firebase\n\n-Database Design\n\n-UX and UI design\n\n-Riverpod (state management)\n\n-API implementation\n\n-User authentication\n\n-User authentication\n",
+        textSpan2:
+            "\nDownload this application you visit the link below to Google Play\n",
+        textSpan3: "",
+        url:
+            "https://play.google.com/store/apps/details?id=com.ctksoftware.surpriseme"),
     Container(
       margin: const EdgeInsets.symmetric(horizontal: 30),
       width: 30,
