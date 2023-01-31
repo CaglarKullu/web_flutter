@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class MySkills extends ConsumerWidget {
-  const MySkills({super.key});
+class MobileMySkills extends ConsumerWidget {
+  const MobileMySkills({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -13,10 +13,13 @@ class MySkills extends ConsumerWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
-          child: Text(
-            "My Skills",
-            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 15),
+          child: Center(
+            child: Text(
+              "My Skills",
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         FittedBox(

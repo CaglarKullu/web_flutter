@@ -1,4 +1,4 @@
-import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_layout.dart';
+import 'package:caglar_portfolio/widgets/common_features/tictaktoe.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/web_layout.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         } else {
           isWeb = true;
         }
-        return isWeb == true ? const WebLayout() : const MobileLayout();
+        return isWeb == true ? WebLayout() : const TicTacToe();
       },
     );
   }

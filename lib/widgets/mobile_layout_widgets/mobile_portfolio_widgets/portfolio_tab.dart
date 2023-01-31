@@ -1,19 +1,19 @@
-import 'package:caglar_portfolio/widgets/web_layout_widgets/portfolio_widgets/portfolio_card.dart';
+import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_portfolio_widgets/portfolio_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'indicator.dart';
 
-class PortfolioPage extends StatefulWidget {
-  const PortfolioPage({super.key});
+class MobilePortfolioPage extends StatefulWidget {
+  const MobilePortfolioPage({super.key});
 
   @override
-  State<PortfolioPage> createState() => _PortfolioPageState();
+  State<MobilePortfolioPage> createState() => _PortfolioPageState();
 }
 
-class _PortfolioPageState extends State<PortfolioPage> {
+class _PortfolioPageState extends State<MobilePortfolioPage> {
   final List<Widget> _portfolioPages = [
-    const PortfolioCard(
+    const MobilePortfolioCard(
       heroTag: "feedly",
       imageStr: "assets/images/feedly.png",
       cardMessage:
@@ -26,7 +26,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
       url:
           'https://play.google.com/store/apps/details?id=com.ctksoftware.feedly',
     ),
-    const PortfolioCard(
+    const MobilePortfolioCard(
         imageStr: "assets/images/surprise_me.png",
         cardMessage:
             "Surprise Me is the first mobile application that has been designed to allow you, its users, to find some random cocktail recipes in a whole bunch of cocktails.",
@@ -38,7 +38,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
         textSpan3: "",
         url:
             "https://play.google.com/store/apps/details?id=com.ctksoftware.surpriseme"),
-    const PortfolioCard(
+    const MobilePortfolioCard(
         imageStr: "assets/images/coming_soon.jpeg",
         cardMessage: "cardMessage",
         heroTag: "coming soon",
@@ -58,6 +58,14 @@ class _PortfolioPageState extends State<PortfolioPage> {
     return SafeArea(
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Center(
+                child: Text(
+              "My Portfolio",
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
+            )),
+          ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 10.h),
             height: 300.h,

@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WebLayout extends ConsumerWidget {
-  const WebLayout({super.key});
+  final ScrollController _controller = ScrollController();
+  WebLayout({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,9 +19,13 @@ class WebLayout extends ConsumerWidget {
     final contactKey = ref.watch(contactKeyProvider);
     return Scaffold(
         appBar: AppBar(
-          flexibleSpace: const AppBarWidget(),
+          flexibleSpace: AppBarWidget(
+            webController: _controller,
+            mobileController: null,
+          ),
         ),
         body: ListView(
+          controller: _controller,
           children: [
             SizedBox(
               width: size.width / 2,

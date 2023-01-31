@@ -15,16 +15,19 @@ class AppBarButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: EdgeInsets.only(left: 3.w, right: 3.w),
-      child: Center(
-        child: Text(buttonName,
-            style: TextStyle(
-              color: isSelected[index]
-                  ? Consts.selectedStyle
-                  : Consts.unselectedStyle,
-              fontSize: 16.sp,
-            )),
+    return Container(
+      color: isSelected[index] ? Consts.kGreyColor : Consts.backgroundColor,
+      child: Padding(
+        padding: EdgeInsets.only(left: 3.w, right: 3.w),
+        child: Center(
+          child: Text(buttonName,
+              style: TextStyle(
+                color: isSelected[index]
+                    ? Consts.selectedStyle
+                    : Consts.unselectedStyle,
+                fontSize: 16.sp,
+              )),
+        ),
       ),
     );
   }

@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PortfolioCard extends ConsumerWidget {
+class MobilePortfolioCard extends ConsumerWidget {
   final String imageStr;
   final String cardMessage;
   final String heroTag;
@@ -14,7 +14,7 @@ class PortfolioCard extends ConsumerWidget {
   final String textSpan3;
   final String url;
 
-  const PortfolioCard(
+  const MobilePortfolioCard(
       {super.key,
       required this.imageStr,
       required this.cardMessage,
