@@ -1,13 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class TicTacToe extends StatefulWidget {
-  const TicTacToe({super.key});
+class TicTacToeAI extends StatefulWidget {
+  const TicTacToeAI({super.key});
 
   @override
-  TicTacToeState createState() => TicTacToeState();
+  TicTacToeAIState createState() => TicTacToeAIState();
 }
 
-class TicTacToeState extends State<TicTacToe> {
+class TicTacToeAIState extends State<TicTacToeAI> {
   List<List<String>> board = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -15,15 +17,15 @@ class TicTacToeState extends State<TicTacToe> {
   ];
   String _turn = "X";
 
+  void resetGame() {
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (BuildContext context) => super.widget));
+  }
+
   void changeTurn() {
     setState(() {
       _turn = _turn == "O" ? "X" : "O";
     });
-  }
-
-  void resetGame() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => super.widget));
   }
 
   bool checkWin(String player) {
@@ -50,6 +52,30 @@ class TicTacToeState extends State<TicTacToe> {
       return true;
     }
     return false;
+  }
+
+  void aiMove() {
+    if (_turn == "O") {
+      List<List<int>> emptySquares = [];
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          if (board[i][j] == " ") {
+            emptySquares.add([i, j]);
+          }
+        }
+      }
+      if (emptySquares.isNotEmpty) {
+        int randomIndex = Random().nextInt(emptySquares.length);
+        int row = emptySquares[randomIndex][0];
+        int col = emptySquares[randomIndex][1];
+        setState(() {
+          board[row][col] = "O";
+          checkWin(_turn);
+          changeTurn();
+          checkWin(_turn);
+        });
+      }
+    }
   }
 
   @override
@@ -91,6 +117,8 @@ class TicTacToeState extends State<TicTacToe> {
                             if (board[row][col] == " ") {
                               board[row][col] = _turn;
                               changeTurn();
+                              aiMove();
+                              checkWin(_turn);
                             }
                           });
                         },

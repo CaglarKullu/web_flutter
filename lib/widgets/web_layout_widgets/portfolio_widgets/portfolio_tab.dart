@@ -68,13 +68,13 @@ class _PortfolioPageState extends State<PortfolioPage> {
                 controller: _pageController,
                 itemCount: _portfolioPages.length,
                 itemBuilder: ((context, index) {
-                  var _scale = activePage == index ? 1.0 : 0.8;
+                  var scale = activePage == index ? 1.0 : 0.8;
                   return TweenAnimationBuilder(
                     curve: Curves.ease,
                     duration: const Duration(
                       milliseconds: 350,
                     ),
-                    tween: Tween(begin: _scale, end: _scale),
+                    tween: Tween(begin: scale, end: scale),
                     child: _portfolioPages[index % _portfolioPages.length],
                     builder: (context, value, child) {
                       return Transform.scale(
