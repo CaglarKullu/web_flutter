@@ -16,7 +16,7 @@ class MySkills extends ConsumerWidget {
         Center(
           child: Text(
             "My Skills",
-            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
           ),
         ),
         FittedBox(

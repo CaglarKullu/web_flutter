@@ -1,15 +1,17 @@
 import 'dart:math';
 
+import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TicTacToeAI extends StatefulWidget {
+class TicTacToeAI extends ConsumerStatefulWidget {
   const TicTacToeAI({super.key});
 
   @override
-  TicTacToeAIState createState() => TicTacToeAIState();
+  ConsumerState<TicTacToeAI> createState() => TicTacToeAIState();
 }
 
-class TicTacToeAIState extends State<TicTacToeAI> {
+class TicTacToeAIState extends ConsumerState<TicTacToeAI> {
   List<List<String>> board = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -80,6 +82,7 @@ class TicTacToeAIState extends State<TicTacToeAI> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = ref.watch(sizeProviderProvider(context));
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tic Tac Toe"),
@@ -99,57 +102,67 @@ class TicTacToeAIState extends State<TicTacToeAI> {
                 ),
               ],
             )
-          : Column(
-              children: [
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemCount: 9,
-                    itemBuilder: (context, index) {
-                      int row = index ~/ 3;
-                      int col = index % 3;
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (board[row][col] == " ") {
-                              board[row][col] = _turn;
-                              changeTurn();
-                              aiMove();
-                              checkWin(_turn);
-                            }
-                          });
-                        },
-                        child: AnimatedContainer(
-                          decoration: BoxDecoration(
-                            color: board[row][col] == "X"
-                                ? Colors.blue
-                                : Colors.red,
-                            border: Border.all(color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
+          : Center(
+              child: Column(
+                children: [
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.fitHeight,
+                      child: SizedBox(
+                        height: size.height,
+                        width: size.width / 2.25,
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
                           ),
-                          duration: const Duration(seconds: 1),
-                          child: Center(
-                            child: Text(
-                              board[row][col],
-                              style: const TextStyle(fontSize: 50),
-                            ),
-                          ),
+                          itemCount: 9,
+                          itemBuilder: (context, index) {
+                            int row = index ~/ 3;
+                            int col = index % 3;
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  if (board[row][col] == " ") {
+                                    board[row][col] = _turn;
+                                    changeTurn();
+                                    aiMove();
+                                    checkWin(_turn);
+                                  }
+                                });
+                              },
+                              child: AnimatedContainer(
+                                decoration: BoxDecoration(
+                                  color: board[row][col] == "X"
+                                      ? Colors.blue
+                                      : Colors.red,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                ),
+                                duration: const Duration(seconds: 1),
+                                child: Center(
+                                  child: Text(
+                                    board[row][col],
+                                    style: const TextStyle(fontSize: 50),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
-                Text("Player: $_turn"),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                      onPressed: resetGame, child: const Text("Reset Game!")),
-                ),
-              ],
+                  Text("Player: $_turn"),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                        onPressed: resetGame, child: const Text("Reset Game!")),
+                  ),
+                ],
+              ),
             ),
     );
   }

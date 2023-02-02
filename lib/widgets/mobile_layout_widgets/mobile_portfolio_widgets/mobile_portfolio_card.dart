@@ -1,5 +1,7 @@
 import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/consts/providers.dart';
+import 'package:caglar_portfolio/widgets/common_features/tictaktoe.dart';
+import 'package:caglar_portfolio/widgets/common_features/tictaktoe_ai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -27,6 +29,24 @@ class MobilePortfolioCard extends ConsumerWidget {
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
+  }
+
+  bool isURL(String url) {
+    if (url == "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  void goToAIPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const TicTacToeAI()));
+  }
+
+  void goToPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const TicTacToe()));
   }
 
   @override
@@ -80,11 +100,40 @@ class MobilePortfolioCard extends ConsumerWidget {
                 elevation: 10,
                 color: Consts.kGreyColor,
                 child: TextButton(
-                  onPressed: (() => _launchUrl(Uri.parse(url))),
-                  child: Text('Download From Google Play',
-                      style: Consts.normalText),
+                  onPressed: () {
+                    if (isURL(url)) {
+                      _launchUrl(Uri.parse(url));
+                    } else {
+                      goToAIPage(context);
+                    }
+                  },
+                  child: isURL(url) == false
+                      ? Text('Play TicTactoe vs Machine',
+                          style: Consts.normalText)
+                      : Text('Download From Google Play',
+                          style: Consts.normalText),
                 ),
               ),
+              isURL(url) == false
+                  ? Card(
+                      elevation: 10,
+                      color: Consts.kGreyColor,
+                      child: TextButton(
+                        onPressed: () {
+                          if (isURL(url)) {
+                            _launchUrl(Uri.parse(url));
+                          } else {
+                            goToPage(context);
+                          }
+                        },
+                        child: isURL(url) == false
+                            ? Text('Play TicTactoe with a friend',
+                                style: Consts.normalText)
+                            : Text('Download From Google Play',
+                                style: Consts.normalText),
+                      ),
+                    )
+                  : const SizedBox(),
               Card(
                 elevation: 10,
                 color: Consts.kGreyColor,

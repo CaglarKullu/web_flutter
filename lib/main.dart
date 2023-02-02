@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             ScreenType screenType) {
           return MaterialApp(
             scrollBehavior: AppScrollBehavior(),
-            title: 'Flutter Demo',
+            title: 'Caglar Kullu Portfolio Page',
             theme: ThemeData.dark().copyWith(useMaterial3: true),
             home: const MyHomePage(),
           );

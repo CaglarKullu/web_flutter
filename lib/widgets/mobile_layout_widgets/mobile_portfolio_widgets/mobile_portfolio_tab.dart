@@ -1,4 +1,5 @@
-import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_portfolio_widgets/portfolio_card.dart';
+import 'package:caglar_portfolio/widgets/common_features/tictaktoe.dart';
+import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_portfolio_widgets/mobile_portfolio_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -39,13 +40,22 @@ class _PortfolioPageState extends State<MobilePortfolioPage> {
         url:
             "https://play.google.com/store/apps/details?id=com.ctksoftware.surpriseme"),
     const MobilePortfolioCard(
+        imageStr: "assets/images/tic_tac_toe.png",
+        cardMessage:
+            "Here is a small humble game coded by me 'TicTacToe' for proof of concept purposes. Have fun!",
+        heroTag: "tictactoe",
+        textSpan1: "You can play agains machine or with a friend",
+        textSpan2: "",
+        textSpan3: "",
+        url: ""),
+    const MobilePortfolioCard(
         imageStr: "assets/images/coming_soon.jpeg",
         cardMessage: "cardMessage",
         heroTag: "coming soon",
         textSpan1: "textSpan1",
         textSpan2: "textSpan2",
         textSpan3: "",
-        url: "url"),
+        url: ""),
   ];
 
   final PageController _pageController =
@@ -59,7 +69,7 @@ class _PortfolioPageState extends State<MobilePortfolioPage> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
+            padding: const EdgeInsets.only(top: 10, bottom: 10.0),
             child: Center(
                 child: Text(
               "My Portfolio",
@@ -105,7 +115,7 @@ class _PortfolioPageState extends State<MobilePortfolioPage> {
           ),
           SizedBox(
             height: 100.h,
-          )
+          ),
         ],
       ),
     );

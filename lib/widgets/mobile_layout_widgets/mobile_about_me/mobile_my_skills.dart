@@ -26,7 +26,7 @@ class MobileMySkills extends ConsumerWidget {
           fit: BoxFit.fill,
           child: Center(
             child: SizedBox(
-              width: size.width > 500 ? size.width / 3 : size.width / 2,
+              width: size.width > 500 ? size.width / 3 : size.width * 0.8,
               child: GridView.count(
                 physics: const NeverScrollableScrollPhysics(),
                 childAspectRatio: 1,

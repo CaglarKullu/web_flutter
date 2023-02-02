@@ -39,17 +39,26 @@ class _PortfolioPageState extends State<PortfolioPage> {
         url:
             "https://play.google.com/store/apps/details?id=com.ctksoftware.surpriseme"),
     const PortfolioCard(
+        imageStr: "assets/images/tic_tac_toe.png",
+        cardMessage:
+            "Here is a small humble game coded by me 'TicTacToe' for proof of concept purposes. Have fun!",
+        heroTag: "tictactoe",
+        textSpan1: "You can play agains machine or with a friend",
+        textSpan2: "",
+        textSpan3: "",
+        url: ""),
+    const PortfolioCard(
         imageStr: "assets/images/coming_soon.jpeg",
         cardMessage: "cardMessage",
         heroTag: "coming soon",
         textSpan1: "textSpan1",
         textSpan2: "textSpan2",
         textSpan3: "",
-        url: "url"),
+        url: ""),
   ];
 
   final PageController _pageController =
-      PageController(initialPage: 0, viewportFraction: 0.7);
+      PageController(initialPage: 0, viewportFraction: 0.5);
 
   int activePage = 0;
 
@@ -58,9 +67,17 @@ class _PortfolioPageState extends State<PortfolioPage> {
     return SafeArea(
       child: Column(
         children: [
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10.h),
-            height: 300.h,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Text(
+                "My Portfolio",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 600.h,
             child: PageView.builder(
                 onPageChanged: (page) => setState(() {
                       activePage = page;

@@ -1,13 +1,15 @@
+import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TicTacToe extends StatefulWidget {
+class TicTacToe extends ConsumerStatefulWidget {
   const TicTacToe({super.key});
 
   @override
   TicTacToeState createState() => TicTacToeState();
 }
 
-class TicTacToeState extends State<TicTacToe> {
+class TicTacToeState extends ConsumerState<TicTacToe> {
   List<List<String>> board = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -54,6 +56,7 @@ class TicTacToeState extends State<TicTacToe> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = ref.watch(sizeProviderProvider(context));
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tic Tac Toe"),
@@ -73,55 +76,64 @@ class TicTacToeState extends State<TicTacToe> {
                 ),
               ],
             )
-          : Column(
-              children: [
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemCount: 9,
-                    itemBuilder: (context, index) {
-                      int row = index ~/ 3;
-                      int col = index % 3;
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (board[row][col] == " ") {
-                              board[row][col] = _turn;
-                              changeTurn();
-                            }
-                          });
-                        },
-                        child: AnimatedContainer(
-                          decoration: BoxDecoration(
-                            color: board[row][col] == "X"
-                                ? Colors.blue
-                                : Colors.red,
-                            border: Border.all(color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
+          : Center(
+              child: Column(
+                children: [
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.fitHeight,
+                      child: SizedBox(
+                        height: size.height,
+                        width: size.width / 2.25,
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
                           ),
-                          duration: const Duration(seconds: 1),
-                          child: Center(
-                            child: Text(
-                              board[row][col],
-                              style: const TextStyle(fontSize: 50),
-                            ),
-                          ),
+                          itemCount: 9,
+                          itemBuilder: (context, index) {
+                            int row = index ~/ 3;
+                            int col = index % 3;
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  if (board[row][col] == " ") {
+                                    board[row][col] = _turn;
+                                    changeTurn();
+                                  }
+                                });
+                              },
+                              child: AnimatedContainer(
+                                decoration: BoxDecoration(
+                                  color: board[row][col] == "X"
+                                      ? Colors.blue
+                                      : Colors.red,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                ),
+                                duration: const Duration(seconds: 1),
+                                child: Center(
+                                  child: Text(
+                                    board[row][col],
+                                    style: const TextStyle(fontSize: 50),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
-                Text("Player: $_turn"),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                      onPressed: resetGame, child: const Text("Reset Game!")),
-                ),
-              ],
+                  Text("Player: $_turn"),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                        onPressed: resetGame, child: const Text("Reset Game!")),
+                  ),
+                ],
+              ),
             ),
     );
   }
