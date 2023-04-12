@@ -75,7 +75,8 @@ class _ContactFormState extends State<ContactForm> {
                         } else if (states.contains(MaterialState.disabled)) {
                           return Colors.grey;
                         }
-                        return Colors.blue; // Use the component's default.
+                        return const Color.fromRGBO(
+                            32, 184, 1, 1); // Use the component's default.
                       },
                     ),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -83,7 +84,10 @@ class _ContactFormState extends State<ContactForm> {
                       borderRadius: BorderRadius.circular(40.0),
                     ))),
                 onPressed: () {},
-                child: null,
+                child: const Text(
+                  "Send",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             )
           ],

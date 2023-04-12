@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             scrollBehavior: AppScrollBehavior(),
             title: 'Caglar Kullu Portfolio Page',
-            theme: ThemeData.dark().copyWith(useMaterial3: true),
+            theme: ThemeData.dark().copyWith(
+                useMaterial3: true, primaryColorDark: Colors.cyanAccent),
             home: const MyHomePage(),
           );
         },

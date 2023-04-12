@@ -4,7 +4,6 @@ import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_about_me/m
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/mobile_contact_tab.dart';
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_portfolio_widgets/mobile_portfolio_tab.dart';
 
-import 'package:caglar_portfolio/widgets/web_layout_widgets/contact_tab_widgets/contact_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,23 +26,39 @@ class MobileLayout extends ConsumerWidget {
             webController: null,
           ),
         ),
-        body: ListView(
-          controller: _controller,
-          children: [
-            SizedBox(
-              width: size.width / 2,
-              height: size.height,
-              child: MobileAboutPage(
-                key: mobileAboutKey,
+        body: Container(
+          width: size.width,
+          height: size.height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(203, 249, 255, 1),
+                Color.fromRGBO(222, 249, 255, 1),
+                Color.fromRGBO(230, 251, 254, 1),
+                Color.fromRGBO(252, 252, 252, 1),
+              ],
+            ),
+          ),
+          child: ListView(
+            controller: _controller,
+            children: [
+              SizedBox(
+                width: size.width / 2,
+                height: size.height,
+                child: MobileAboutPage(
+                  key: mobileAboutKey,
+                ),
               ),
-            ),
-            MobilePortfolioPage(
-              key: mobilePortfolioKey,
-            ),
-            MobileContactPage(
-              key: mobileContactKey,
-            )
-          ],
+              MobilePortfolioPage(
+                key: mobilePortfolioKey,
+              ),
+              MobileContactPage(
+                key: mobileContactKey,
+              )
+            ],
+          ),
         ),
       ),
     );

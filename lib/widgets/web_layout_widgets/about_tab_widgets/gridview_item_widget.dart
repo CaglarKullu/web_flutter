@@ -14,7 +14,7 @@ class GridviewItem extends ConsumerWidget {
       borderRadius: BorderRadius.circular(20),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.amberAccent,
+        color: Colors.greenAccent,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CachedNetworkImage(

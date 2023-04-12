@@ -21,17 +21,17 @@ class MobileMeWriting extends ConsumerWidget {
             children: <TextSpan>[
               TextSpan(
                   text: "I'm Caglar Kullu, ",
-                  style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                  style: TextStyle(fontSize: 20.sp, color: Colors.black)),
               TextSpan(
-                  text: "Flutter Devopler ",
-                  style: TextStyle(fontSize: 25.sp, color: Colors.amber)),
+                  text: "the Flutter Devopler ",
+                  style: TextStyle(fontSize: 25.sp, color: Colors.green)),
               (size.width > 500)
                   ? const TextSpan(text: "             ")
                   : const TextSpan(text: " "),
               TextSpan(
                   text:
-                      "I can create mobile applications, web sites and desktop applications according to your desires.",
-                  style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                      "you are looking for. I can create mobile applications, web sites and desktop applications according to your desires.",
+                  style: TextStyle(fontSize: 20.sp, color: Colors.black)),
             ],
           )),
         ),
