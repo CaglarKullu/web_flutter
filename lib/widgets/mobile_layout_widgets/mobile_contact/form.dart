@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/textfields.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class ContactForm extends StatefulWidget {
   const ContactForm({super.key});
@@ -14,6 +18,14 @@ class _ContactFormState extends State<ContactForm> {
   TextEditingController emailController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    subjectController.dispose();
+    messageController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -83,7 +95,14 @@ class _ContactFormState extends State<ContactForm> {
                         RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40.0),
                     ))),
-                onPressed: () {},
+                onPressed: _enableBtn
+                    ? () {
+                        sendEmail(
+                            email: emailController.text,
+                            message: messageController.text,
+                            subject: subjectController.text);
+                      }
+                    : null,
                 child: const Text(
                   "Send",
                   style: TextStyle(color: Colors.white),
@@ -94,5 +113,37 @@ class _ContactFormState extends State<ContactForm> {
         ),
       ),
     );
+  }
+
+  Future sendEmail({
+    required String email,
+    required String message,
+    required String subject,
+  }) async {
+    try {
+      final serviceId = 'service_pshxtgz';
+      final templateId = 'template_wg1grqr';
+      final userId = 'CHbrM8VJ9-1EiNBQN';
+      final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'service_id': serviceId,
+          'template_id': templateId,
+          'user_id': userId,
+          'template_params': {
+            'user_subject': subject,
+            'user_message': message,
+            'user_email': email,
+          },
+        }),
+        headers: {
+          'contentType': 'application/json',
+        },
+      );
+      print(response.statusCode.toString());
+    } catch (e) {
+      print(e);
+    }
   }
 }
