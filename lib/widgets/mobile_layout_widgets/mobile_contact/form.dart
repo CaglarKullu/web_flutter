@@ -4,6 +4,7 @@ import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/te
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({super.key});
@@ -121,12 +122,16 @@ class _ContactFormState extends State<ContactForm> {
     required String subject,
   }) async {
     try {
-      final serviceId = '';
-      final templateId = '';
-      final userId = '';
+      final serviceId = dotenv.env['SERVICE_ID'];
+      final templateId = dotenv.env['TEMPLETE_ID'];
+      final userId = dotenv.env['USER_ID'];
       final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
       final response = await http.post(
         url,
+        headers: {
+          'origin': 'http:localhost',
+          'Content-Type': 'application/json',
+        },
         body: json.encode({
           'service_id': serviceId,
           'template_id': templateId,
@@ -137,9 +142,6 @@ class _ContactFormState extends State<ContactForm> {
             'user_email': email,
           },
         }),
-        headers: {
-          'contentType': 'application/json',
-        },
       );
       print(response.statusCode.toString());
     } catch (e) {
