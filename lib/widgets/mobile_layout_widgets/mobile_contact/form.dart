@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/textfields.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ContactForm extends StatefulWidget {
@@ -143,9 +143,9 @@ class _ContactFormState extends State<ContactForm> {
           },
         }),
       );
-      print(response.statusCode.toString());
+      log(response.statusCode.toString());
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
   }
 }
