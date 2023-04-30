@@ -125,7 +125,7 @@ class _ContactFormState extends State<ContactForm> {
       final serviceId = dotenv.env['SERVICE_ID'];
       final templateId = dotenv.env['TEMPLETE_ID'];
       final userId = dotenv.env['USER_ID'];
-      final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+      final url = Uri.parse(dotenv.env['EMAIL_URL']!);
       final response = await http.post(
         url,
         headers: {
@@ -143,7 +143,11 @@ class _ContactFormState extends State<ContactForm> {
           },
         }),
       );
-      log(response.statusCode.toString());
+      if (response.statusCode == 200) {
+        log(response.statusCode.toString());
+      } else {
+        log(response.statusCode.toString());
+      }
     } catch (e) {
       log(e.toString());
     }
