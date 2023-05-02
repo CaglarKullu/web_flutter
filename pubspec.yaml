@@ -43,9 +43,9 @@ dependencies:
   fluttericon: ^2.0.0
   url_strategy: ^0.2.0
   envied:
-  http: ^0.13.5
   flutter_dotenv:
   retrofit:
+  dio: ^5.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
