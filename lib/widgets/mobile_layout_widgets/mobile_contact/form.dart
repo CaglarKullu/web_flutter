@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:caglar_portfolio/service/api_service.dart';
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/textfields.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ContactForm extends StatefulWidget {
@@ -29,6 +30,8 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
+    ApiService apiService = ApiService(dio.Dio());
+    final response = apiService.postEmail();
     return Form(
       key: _formKey,
       onChanged: (() {
@@ -126,27 +129,26 @@ class _ContactFormState extends State<ContactForm> {
       final templateId = dotenv.env['TEMPLETE_ID'];
       final userId = dotenv.env['USER_ID'];
       final url = Uri.parse(dotenv.env['EMAIL_URL']!);
-      final response = await http.post(
-        url,
-        headers: {
-          'origin': 'http:localhost',
-          'Content-Type': 'application/json',
-        },
-        body: json.encode({
-          'service_id': serviceId,
-          'template_id': templateId,
-          'user_id': userId,
-          'template_params': {
-            'user_subject': subject,
-            'user_message': message,
-            'user_email': email,
-          },
-        }),
-      );
-      if (response.statusCode == 200) {
-        log(response.statusCode.toString());
+      final diDio = dio.Dio();
+      diDio.options.headers['origin'] = 'http:localhost';
+      diDio.options.headers['Content-Type'] = 'application/json';
+
+      final dioResponse = await diDio.post(dotenv.env['EMAIL_URL']!,
+          data: json.encode({
+            'service_id': serviceId,
+            'template_id': templateId,
+            'user_id': userId,
+            'template_params': {
+              'user_subject': subject,
+              'user_message': message,
+              'user_email': email,
+            },
+          }));
+
+      if (dioResponse.statusCode == 200) {
+        log(dioResponse.statusCode.toString());
       } else {
-        log(response.statusCode.toString());
+        log(dioResponse.statusCode.toString());
       }
     } catch (e) {
       log(e.toString());
