@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:caglar_portfolio/models/post_model.dart';
 import 'package:caglar_portfolio/service/api_service.dart';
+import 'package:caglar_portfolio/service/api_service_facade.dart';
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/textfields.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
@@ -30,8 +32,7 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    ApiService apiService = ApiService(dio.Dio());
-    final response = apiService.postEmail();
+    ApiService apiService = ApiService();
     return Form(
       key: _formKey,
       onChanged: (() {
@@ -101,10 +102,10 @@ class _ContactFormState extends State<ContactForm> {
                     ))),
                 onPressed: _enableBtn
                     ? () {
-                        sendEmail(
+                        apiService.postEmail(PostModel(
                             email: emailController.text,
                             message: messageController.text,
-                            subject: subjectController.text);
+                            subject: subjectController.text));
                       }
                     : null,
                 child: const Text(
@@ -117,41 +118,5 @@ class _ContactFormState extends State<ContactForm> {
         ),
       ),
     );
-  }
-
-  Future sendEmail({
-    required String email,
-    required String message,
-    required String subject,
-  }) async {
-    try {
-      final serviceId = dotenv.env['SERVICE_ID'];
-      final templateId = dotenv.env['TEMPLETE_ID'];
-      final userId = dotenv.env['USER_ID'];
-      final url = Uri.parse(dotenv.env['EMAIL_URL']!);
-      final diDio = dio.Dio();
-      diDio.options.headers['origin'] = 'http:localhost';
-      diDio.options.headers['Content-Type'] = 'application/json';
-
-      final dioResponse = await diDio.post(dotenv.env['EMAIL_URL']!,
-          data: json.encode({
-            'service_id': serviceId,
-            'template_id': templateId,
-            'user_id': userId,
-            'template_params': {
-              'user_subject': subject,
-              'user_message': message,
-              'user_email': email,
-            },
-          }));
-
-      if (dioResponse.statusCode == 200) {
-        log(dioResponse.statusCode.toString());
-      } else {
-        log(dioResponse.statusCode.toString());
-      }
-    } catch (e) {
-      log(e.toString());
-    }
   }
 }

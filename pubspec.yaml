@@ -44,7 +44,6 @@ dependencies:
   url_strategy: ^0.2.0
   envied:
   flutter_dotenv:
-  retrofit:
   dio: ^5.1.1
 dev_dependencies:
   flutter_test:
@@ -58,7 +57,6 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner:
   envied_generator:
-  retrofit_generator:
   json_serializable:
 
 # For information on the generic Dart part of this file, see the
