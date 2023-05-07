@@ -1,13 +1,7 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:caglar_portfolio/models/post_model.dart';
 import 'package:caglar_portfolio/service/api_service.dart';
-import 'package:caglar_portfolio/service/api_service_facade.dart';
 import 'package:caglar_portfolio/widgets/mobile_layout_widgets/mobile_contact/textfields.dart';
-import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({super.key});
@@ -102,10 +96,12 @@ class _ContactFormState extends State<ContactForm> {
                     ))),
                 onPressed: _enableBtn
                     ? () {
-                        apiService.postEmail(PostModel(
-                            email: emailController.text,
-                            message: messageController.text,
-                            subject: subjectController.text));
+                        apiService
+                            .postEmail(PostModel(
+                                email: emailController.text,
+                                message: messageController.text,
+                                subject: subjectController.text))
+                            .whenComplete(() => print("sent"));
                       }
                     : null,
                 child: const Text(

@@ -1,19 +1,19 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:caglar_portfolio/consts/env.dart';
 import 'package:caglar_portfolio/models/post_model.dart';
 import 'package:caglar_portfolio/service/api_service_facade.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:dio/dio.dart' as dio;
 
 class ApiService implements ApiServiceFacade {
   @override
   Future postEmail(PostModel post) async {
     try {
-      final serviceId = dotenv.env['SERVICE_ID'];
-      final templateId = dotenv.env['TEMPLETE_ID'];
-      final userId = dotenv.env['USER_ID'];
-      final url = dotenv.env['EMAIL_URL']!;
+      final serviceId = Env.serviceID;
+      final templateId = Env.templeteID;
+      final userId = Env.userID;
+      final url = Env.emailUrl;
       final diDio = dio.Dio();
       diDio.options.headers['origin'] = 'http:localhost';
       diDio.options.headers['Content-Type'] = 'application/json';
