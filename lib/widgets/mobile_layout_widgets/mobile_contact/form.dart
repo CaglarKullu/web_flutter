@@ -101,7 +101,7 @@ class _ContactFormState extends State<ContactForm> {
                                 email: emailController.text,
                                 message: messageController.text,
                                 subject: subjectController.text))
-                            .whenComplete(() => print("sent"));
+                            .whenComplete(() => _showBottomsheet(context));
                       }
                     : null,
                 child: const Text(
@@ -109,10 +109,35 @@ class _ContactFormState extends State<ContactForm> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+_showBottomsheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        height: 200,
+        color: Colors.amber,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const Text('"Message has been sent"'),
+              ElevatedButton(
+                child: const Text('Close'),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
