@@ -6,6 +6,11 @@ import '../widgets/mobile_layout_widgets/mobile_about_me/mobile_about_me.dart';
 import '../widgets/web_layout_widgets/about_tab_widgets/about_tab.dart';
 
 class Consts {
+  static Color kAppBackground = const Color.fromRGBO(36, 82, 122, 1);
+  static Color kButtonSelected = const Color.fromRGBO(164, 138, 109, 1);
+  static Color kButtonUnselected = const Color.fromRGBO(238, 225, 207, 1);
+  static Color kPrimaryColor = const Color.fromRGBO(240, 251, 255, 1);
+  static Color kSecondaryColor = const Color.fromRGBO(89, 110, 121, 1);
   static Color unselectedStyle = Colors.grey;
   static Color selectedStyle = Colors.white;
   static Color backgroundColor = Colors.black12;

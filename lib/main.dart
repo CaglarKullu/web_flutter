@@ -1,11 +1,10 @@
+import 'package:caglar_portfolio/router/app_route_config.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_strategy/url_strategy.dart';
-
-import 'widgets/homepage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,16 +17,17 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    final _goRouter = getRouter(context);
     return SizedBox(
       child: ResponsiveSizer(
         builder: (BuildContext context, Orientation orientation,
             ScreenType screenType) {
-          return MaterialApp(
+          return MaterialApp.router(
+            routerConfig: _goRouter,
             scrollBehavior: AppScrollBehavior(),
             title: 'Caglar Kullu Portfolio Page',
             theme: ThemeData.dark().copyWith(
                 useMaterial3: true, primaryColorDark: Colors.cyanAccent),
-            home: const MyHomePage(),
           );
         },
       ),
