@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MePhoto extends ConsumerWidget {
   const MePhoto({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Size size = ref.refresh(sizeProviderProvider(context));

@@ -1,3 +1,4 @@
+import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,12 @@ class MeWriting extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Size size = ref.refresh(sizeProviderProvider(context));
+    Size size = MediaQuery.of(context).size;
+    bool isLaptopScreen = (size.width > 769);
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
-        width: size.width / 10,
-        height: size.height,
+        width: isLaptopScreen ? size.width / 10 : size.width,
         child: Center(
           child: RichText(
               text: TextSpan(
@@ -22,10 +23,14 @@ class MeWriting extends ConsumerWidget {
             children: <TextSpan>[
               TextSpan(
                   text: "I'm Caglar Kullu, ",
-                  style: TextStyle(fontSize: 15.sp, color: Colors.white)),
+                  style:
+                      TextStyle(fontSize: 15.sp, color: Consts.kPrimaryColor)),
               TextSpan(
                   text: "Flutter Devopler ",
-                  style: TextStyle(fontSize: 17.sp, color: Colors.amber)),
+                  style: TextStyle(
+                      fontSize: 17.sp,
+                      color: Consts.kButtonUnselected,
+                      fontWeight: FontWeight.bold)),
               (size.width > 500)
                   ? const TextSpan(text: "             ")
                   : const TextSpan(text: " "),

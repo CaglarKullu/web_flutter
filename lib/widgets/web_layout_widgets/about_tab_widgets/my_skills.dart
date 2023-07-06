@@ -19,6 +19,9 @@ class MySkills extends ConsumerWidget {
             style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
           ),
         ),
+        const SizedBox(
+          height: 20,
+        ),
         FittedBox(
           fit: BoxFit.fill,
           child: Center(

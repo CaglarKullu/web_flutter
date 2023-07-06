@@ -1,3 +1,4 @@
+import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/router/app_route_config.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
             scrollBehavior: AppScrollBehavior(),
             title: 'Caglar Kullu Portfolio Page',
             theme: ThemeData.dark().copyWith(
-                useMaterial3: true, primaryColorDark: Colors.cyanAccent),
+                useMaterial3: true, primaryColorDark: Consts.kAppBackground),
           );
         },
       ),
