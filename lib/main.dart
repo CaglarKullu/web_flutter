@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Orientation orientation,
             ScreenType screenType) {
           return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             routerConfig: _goRouter,
             scrollBehavior: AppScrollBehavior(),
             title: 'Caglar Kullu Portfolio Page',
