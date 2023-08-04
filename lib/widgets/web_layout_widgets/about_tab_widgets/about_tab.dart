@@ -2,6 +2,7 @@ import 'package:caglar_portfolio/consts/const.dart';
 import 'package:caglar_portfolio/consts/providers.dart';
 import 'package:caglar_portfolio/router/app_route_consts.dart';
 import 'package:caglar_portfolio/widgets/common_features/button.dart';
+import 'package:caglar_portfolio/widgets/common_features/switch_button.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/me_photo.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/me_writing_widget.dart';
 import 'package:caglar_portfolio/widgets/web_layout_widgets/about_tab_widgets/my_skills.dart';
@@ -21,31 +22,29 @@ class AboutPage extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: Consts.backgroundColor,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            isLapTopScreen
-                ? SizedBox(
-                    width: size.width / 5,
-                  )
-                : const SizedBox(),
-            CustomButton(
-              isSelected: false,
-              label: 'About',
-              onTap: () => context.goNamed(RouteConsts.aboutRouteName),
-            ),
-            CustomButton(
-              isSelected: false,
-              label: 'Portolio',
-              onTap: () {},
-            ),
-            CustomButton(
-              isSelected: false,
-              label: 'Contact',
-              onTap: () => context.goNamed(RouteConsts.contactRouteName),
-            ),
-          ],
-        ),
+        title: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          isLapTopScreen
+              ? SizedBox(
+                  width: size.width / 5,
+                )
+              : const SizedBox(),
+          CustomButton(
+            isSelected: false,
+            label: 'About',
+            onTap: () => context.goNamed(RouteConsts.aboutRouteName),
+          ),
+          CustomButton(
+            isSelected: false,
+            label: 'Portolio',
+            onTap: () {},
+          ),
+          CustomButton(
+            isSelected: false,
+            label: 'Contact',
+            onTap: () => context.goNamed(RouteConsts.contactRouteName),
+          ),
+          const SwichButton(),
+        ]),
       ),
       body: isLapTopScreen
           ? Row(
